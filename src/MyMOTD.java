@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,9 +19,14 @@ public class MyMOTD extends JavaPlugin {
         motdFile = new File(getDataFolder(), "motd.txt");
         
         if (motdFile.exists()) {
-            BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(motdFile), "UTF-8"));
-            motd = r.readLine();
-            r.close();
+            try {
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(motdFile), "UTF-8"));
+                motd = r.readLine();
+                r.close();
+            }
+            catch (IOException e) {
+                getLogger().warn("Could not read motd.txt: " + e.toString());
+            }
         }
         
         getServer().getPluginManager().registerEvents(new ServerListPingListener(this), this);
@@ -32,11 +38,16 @@ public class MyMOTD extends JavaPlugin {
             motdFile.getParentFile().mkdirs();
         }
         
-        BufferedWriter w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(motdFile), "UTF-8"));
-        w.write(motd);
-        w.newLine();
-        w.flush();
-        w.close();
+        try {
+            BufferedWriter w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(motdFile), "UTF-8"));
+            w.write(motd);
+            w.newLine();
+            w.flush();
+            w.close();
+        }
+        catch (IOException e) {
+            getLogger().warn("Could not write motd.txt: " + e.toString());
+        }
     }
     
     public String getMOTD() {
