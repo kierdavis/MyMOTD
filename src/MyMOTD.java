@@ -15,7 +15,7 @@ public class MyMOTD extends JavaPlugin {
     private File motdFile;
     
     public void onEnable() {
-        motd = "\247cSet a MOTD using /motd ...";
+        motd = getServer().getMotd();
         motdFile = new File(getDataFolder(), "motd.txt");
         
         if (motdFile.exists()) {
