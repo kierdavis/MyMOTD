@@ -1,3 +1,9 @@
 name: MyMOTD
-main: com.kierdavis.mymotd.MyMOTD
 version: 0.1.0
+author: Kier Davis <kierdavis@gmail.com>
+
+main: com.kierdavis.mymotd.MyMOTD
+
+commands:
+    motd:
+        description: Get or set the MOTD
