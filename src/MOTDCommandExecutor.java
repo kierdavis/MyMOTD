@@ -24,5 +24,7 @@ public class MOTDCommandExecutor implements CommandExecutor {
         }
         
         sender.sendMessage("\247eMOTD is: \247r" + plugin.getMOTD());
+        
+        return true;
     }
 }
