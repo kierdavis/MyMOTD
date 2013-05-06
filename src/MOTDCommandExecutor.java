@@ -12,7 +12,17 @@ public class MOTDCommandExecutor implements CommandExecutor {
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.hasPermission("mymotd.get")) {
+            sender.sendMessage("\247aYou don't have permission (mymotd.get)");
+            return false;
+        }
+        
         if (args.length > 0) {
+            if (!sender.hasPermission("mymotd.set")) {
+                sender.sendMessage("\247aYou don't have permission (mymotd.set)");
+                return false;
+            }
+            
             StringBuilder b = new StringBuilder();
             b.append(args[0]);
             
@@ -23,7 +33,7 @@ public class MOTDCommandExecutor implements CommandExecutor {
             plugin.setMOTD(b.toString().replaceAll("&", "\247"));
         }
         
-        sender.sendMessage("\247eMOTD is: \247r" + plugin.getMOTD());
+        sender.sendMessage("\247aMOTD is: \247r" + plugin.getMOTD());
         
         return true;
     }

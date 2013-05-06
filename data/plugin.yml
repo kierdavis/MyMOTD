@@ -1,5 +1,5 @@
 name: MyMOTD
-version: 0.1.2
+version: 0.1.3
 author: Kier Davis <kierdavis@gmail.com>
 
 main: com.kierdavis.mymotd.MyMOTD
@@ -7,3 +7,18 @@ main: com.kierdavis.mymotd.MyMOTD
 commands:
     motd:
         description: Get or set the MOTD
+
+permissions:
+    mymotd.*:
+        description: Gives access to all MyMOTD functionality.
+        children:
+            mymotd.get: true
+            mymotd.set: true
+    
+    mymotd.get:
+        description: Gives access to display the MOTD (/motd).
+        default: true
+    
+    mymotd.set:
+        description: Gives access to change the MOTD (/motd ...).
+        default: op
