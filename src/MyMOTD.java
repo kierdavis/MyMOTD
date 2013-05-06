@@ -25,7 +25,7 @@ public class MyMOTD extends JavaPlugin {
                 r.close();
             }
             catch (IOException e) {
-                getLogger().warn("Could not read motd.txt: " + e.toString());
+                getLogger().warning("Could not read motd.txt: " + e.toString());
             }
         }
         
@@ -46,7 +46,7 @@ public class MyMOTD extends JavaPlugin {
             w.close();
         }
         catch (IOException e) {
-            getLogger().warn("Could not write motd.txt: " + e.toString());
+            getLogger().warning("Could not write motd.txt: " + e.toString());
         }
     }
     
