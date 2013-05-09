@@ -1,5 +1,6 @@
 package com.kierdavis.mymotd;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,13 +14,13 @@ public class MOTDCommandExecutor implements CommandExecutor {
     
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!sender.hasPermission("mymotd.get")) {
-            sender.sendMessage("\247aYou don't have permission (mymotd.get)");
+            sender.sendMessage(ChatColor.GREEN + "You don't have permission (mymotd.get)");
             return false;
         }
         
         if (args.length > 0) {
             if (!sender.hasPermission("mymotd.set")) {
-                sender.sendMessage("\247aYou don't have permission (mymotd.set)");
+                sender.sendMessage(ChatColor.GREEN + "You don't have permission (mymotd.set)");
                 return false;
             }
             
@@ -33,7 +34,7 @@ public class MOTDCommandExecutor implements CommandExecutor {
             plugin.setMOTD(b.toString().replaceAll("&", "\247"));
         }
         
-        sender.sendMessage("\247aMOTD is: \247r" + plugin.getMOTD());
+        sender.sendMessage(ChatColor.GREEN + "MOTD is: " + ChatColor.RESET + plugin.getMOTD());
         
         return true;
     }
