@@ -31,7 +31,8 @@ public class MOTDCommandExecutor implements CommandExecutor {
                 b.append(" ").append(args[i]);
             }
             
-            plugin.setMOTD(b.toString().replaceAll("&", "\247"));
+            String motd = ChatColor.translateAlternateColorCodes('&', b.toString());
+            plugin.setMOTD(motd);
         }
         
         sender.sendMessage(ChatColor.GREEN + "MOTD is: " + ChatColor.RESET + plugin.getMOTD());
