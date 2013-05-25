@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
 
 public class MyMOTD extends JavaPlugin {
     private String motd;
@@ -31,6 +32,15 @@ public class MyMOTD extends JavaPlugin {
         
         getServer().getPluginManager().registerEvents(new ServerListPingListener(this), this);
         getCommand("motd").setExecutor(new MOTDCommandExecutor(this));
+        
+        // Start Metrics
+        try {
+            Metrics metrics = new Metrics(this);
+            metrics.start();
+        }
+        catch (IOException e) {
+            getLogger().severe("Failed to submit stats to Metrics: " + e.toString());
+        }
     }
     
     public void onDisable() {
