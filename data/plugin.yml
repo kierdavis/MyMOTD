@@ -1,11 +1,13 @@
 name: MyMOTD
-version: 0.2.4
+version: 0.2.5
 author: Kier Davis <kierdavis@gmail.com>
 
 main: com.kierdavis.mymotd.MyMOTD
 
 commands:
     motd:
+        description: Get or set the MOTD
+    mymotd:
         description: Get or set the MOTD
 
 permissions:

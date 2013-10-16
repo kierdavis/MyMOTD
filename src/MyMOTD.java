@@ -31,7 +31,9 @@ public class MyMOTD extends JavaPlugin {
         }
         
         getServer().getPluginManager().registerEvents(new ServerListPingListener(this), this);
-        getCommand("motd").setExecutor(new MOTDCommandExecutor(this));
+	MOTDCommandExecutor ex = new MOTDCommandExecutor(this);
+        getCommand("motd").setExecutor(ex);
+	getCommand("mymotd").setExecutor(ex);
         
         // Start Metrics
         try {
