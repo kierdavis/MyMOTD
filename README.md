@@ -1,3 +1,5 @@
+**PLEASE NOTE: I no longer actively maintain this project. Pull requests are welcome, but development has halted and issues are unlikely to gain a response.**
+
 MyMOTD is a (very) lightweight plugin to allow the server list MOTD to be changed in-game.
 
 # Usage
